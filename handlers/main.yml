@@ -1,0 +1,17 @@
+---
+# handlers file for sbaerlocher.postfix
+
+- name: start postfix
+  service: name=postfix state=started
+
+- name: enabled postfix
+  service: name=postfix enabled=yes
+
+- name: restart postfix
+  service: name=postfix state=restarted
+
+- name: new aliases
+  command: newaliases
+
+- name: postmap sasl_passwd
+  command: postmap /etc/postfix/sasl_passwd

@@ -1,0 +1,8 @@
+---
+# vars file for sbaerlocher.postfix
+
+postfix_packages:
+    - postfix
+    - cyrus-sasl-plain 
+    - cyrus-sasl
+    - mailx

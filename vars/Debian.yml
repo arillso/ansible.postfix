@@ -1,0 +1,6 @@
+---
+# vars file for sbaerlocher.postfix
+
+postfix_packages:
+    - postfix
+    - mailutils

@@ -1,0 +1,35 @@
+# {{ ansible_managed }}
+
+myorigin = {{ postfix_mailname }}
+
+biff = no
+append_dot_mydomain = no
+readme_directory = no
+
+
+myhostname = {{ postfix_hostname }}
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+mydestination = {{ postfix_hostname }}, localdomain, localhost, localhost.localdomain
+mynetworks = {{ postfix_mynetworks | join(' ') }}
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = {{ postfix_inet_interfaces }}
+inet_protocols = {{ postfix_inet_protocols }}
+
+{% if postfix_relayhost %}
+relayhost = [{{ postfix_relayhost }}]:{{ postfix_relayhost_port }}
+{% if postfix_sasl_auth_enable %}
+smtp_sasl_auth_enable = {{ 'yes' if postfix_sasl_auth_enable else 'no' }}
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+#smtp_sasl_password_maps = static:{{ postfix_sasl_user }}:{{ postfix_sasl_password }}
+smtp_sasl_security_options = {{ postfix_sasl_security_options }}
+{% endif %}
+{% if postfix_relaytls %}
+smtp_use_tls = yes
+smtp_tls_security_level = encrypt
+smtp_tls_note_starttls_offer = yes
+{% endif %}
+{% else %}
+relayhost =
+{% endif %}
