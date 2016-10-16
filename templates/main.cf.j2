@@ -1,35 +1,66 @@
 # {{ ansible_managed }}
 
-myorigin = {{ postfix_mailname }}
-
+# smtpd_banner = $myhostname ESMTP $mail_name
 biff = no
+
+# appending .domain is the MUA's job.
 append_dot_mydomain = no
-readme_directory = no
 
-
-myhostname = {{ postfix_hostname }}
-alias_maps = hash:/etc/aliases
-alias_database = hash:/etc/aliases
-mydestination = {{ postfix_hostname }}, localdomain, localhost, localhost.localdomain
-mynetworks = {{ postfix_mynetworks | join(' ') }}
-mailbox_size_limit = 0
-recipient_delimiter = +
 inet_interfaces = {{ postfix_inet_interfaces }}
 inet_protocols = {{ postfix_inet_protocols }}
+
+# Default is to take the fqdn for the local machine
+myhostname = {{ postfix_hostname }}
+myorigin = {{ postfix_mailname }}
+mydestination = {{ postfix_mydestination | join(' ') }}
+mynetworks = {{ postfix_mynetworks | join(' ') }}
+
+masquerade_classes = envelope_sender, envelope_recipient, header_sender, header_recipient
+masquerade_domains = $myhostname.$mydomain
+
+mailbox_size_limit = 0
+recipient_delimiter = +
+
+mailbox_size_limit = 0
+message_size_limit = 0
+queue_minfree = 100000000
+unknown_local_recipient_reject_code = 550
+recipient_delimiter = +
+
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+
+setgid_group = postdrop
+html_directory = no
+
+queue_directory = /var/spool/postfix
+command_directory = /usr/sbin
+daemon_directory = /usr/libexec/postfix
+data_directory = /var/lib/postfix
+manpage_directory = /usr/share/man
+sample_directory = no
+readme_directory = no
+
+sendmail_path = /usr/sbin/sendmail.postfix
+newaliases_path = /usr/bin/newaliases.postfix
+mailq_path = /usr/bin/mailq.postfix
+
+mail_owner = postfix
+debug_peer_level = 2
+debugger_command =
+     PATH=/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin
+     ddd $daemon_directory/$process_name $process_id & sleep 5
 
 {% if postfix_relayhost %}
 relayhost = [{{ postfix_relayhost }}]:{{ postfix_relayhost_port }}
 {% if postfix_sasl_auth_enable %}
 smtp_sasl_auth_enable = {{ 'yes' if postfix_sasl_auth_enable else 'no' }}
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
-#smtp_sasl_password_maps = static:{{ postfix_sasl_user }}:{{ postfix_sasl_password }}
 smtp_sasl_security_options = {{ postfix_sasl_security_options }}
-{% endif %}
 {% if postfix_relaytls %}
 smtp_use_tls = yes
 smtp_tls_security_level = encrypt
 smtp_tls_note_starttls_offer = yes
 {% endif %}
-{% else %}
-relayhost =
+{% endif %}
 {% endif %}
