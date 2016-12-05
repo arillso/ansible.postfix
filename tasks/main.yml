@@ -8,10 +8,15 @@
     - "vars/{{ ansible_distribution }}.yml"
     - "vars/{{ ansible_os_family }}.yml"
     - "vars/defaults.yml"
+  tags:
+    - configuration
+    - packages
 
 - name: Postfix installed
   package: name="{{ item }}" state=latest
   with_items: "{{ postfix_packages }}"
+  tags:
+    - packages
 
 - name: update configuration file
   template:
@@ -23,6 +28,8 @@
   notify: 
     - postmap sasl_passwd
     - restart postfix
+  tags:
+    - configuration
 
 - name: configure sasl username/password
   template:
@@ -35,6 +42,8 @@
   notify:
     - postmap sasl_passwd
     - restart postfix
+  tags:
+    - configuration
 
 - name: configure aliases
   lineinfile:
@@ -49,3 +58,5 @@
     - new aliases
     - restart postfix
     - enabled postfix
+  tags:
+    - configuration
