@@ -54,6 +54,11 @@ None
 
 ## Changelog
 
+### 1.1
+
+* add tags
+* add become
+
 ### 1.0
 
 * Initial release

@@ -2,16 +2,21 @@
 # handlers file for sbaerlocher.postfix
 
 - name: start postfix
+  become: true
   service: name=postfix state=started
 
 - name: enabled postfix
+  become: true
   service: name=postfix enabled=yes
 
 - name: restart postfix
+  become: true
   service: name=postfix state=restarted
 
 - name: new aliases
+  become: true
   command: newaliases
 
 - name: postmap sasl_passwd
+  become: true
   command: postmap /etc/postfix/sasl_passwd

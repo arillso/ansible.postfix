@@ -13,12 +13,14 @@
     - packages
 
 - name: Postfix installed
+  become: true
   package: name="{{ item }}" state=latest
   with_items: "{{ postfix_packages }}"
   tags:
     - packages
 
 - name: update configuration file
+  become: true
   template:
     src: main.cf.j2
     dest: /etc/postfix/main.cf
@@ -32,6 +34,7 @@
     - configuration
 
 - name: configure sasl username/password
+  become: true
   template:
     src: sasl_passwd.j2
     dest: /etc/postfix/sasl_passwd
@@ -46,6 +49,7 @@
     - configuration
 
 - name: configure aliases
+  become: true
   lineinfile:
     dest: /etc/aliases
     regexp: '^[#]?root:'
