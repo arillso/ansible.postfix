@@ -54,6 +54,10 @@ None
 
 ## Changelog
 
+### 1.2
+
+* rename role name
+
 ### 1.1
 
 * add tags
