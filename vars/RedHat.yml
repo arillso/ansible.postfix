@@ -1,5 +1,5 @@
 ---
-# vars file for sbaerlocher.postfix
+# vars file for arillso.postfix
 
 postfix_packages:
     - postfix

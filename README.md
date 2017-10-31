@@ -1,5 +1,5 @@
 # Ansible Role: Postfix
-[![Build Status](https://travis-ci.org/sbaerlocher/ansible.postfix.svg?branch=master)](https://travis-ci.org/sbaerlocher/ansible.postfix)
+[![Build Status](https://travis-ci.org/arillso/ansible.postfix.svg?branch=master)](https://travis-ci.org/arillso/ansible.postfix)
 
 ## Description
 
@@ -8,7 +8,7 @@ Ansible role for installing and configure Postfix, a mail server.
 ## Installation
 
 ```
-$ ansible-galaxy install sbaerlocher.postfix
+$ ansible-galaxy install arillso.postfix
 ```
 
 ## Requirements
@@ -49,10 +49,14 @@ None
 ```yml
 - hosts: all
   roles:
-     - sbaerlocher.postfix
+     - arillso.postfix
 ```
 
 ## Changelog
+
+### 1.2
+
+* rename role name
 
 ### 1.1
 

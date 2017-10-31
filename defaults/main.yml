@@ -1,5 +1,5 @@
 ---
-# defaults file for sbaerlocher.postfix
+# defaults file for arillso.postfix
 
 postfix_inet_interfaces: all
 postfix_inet_protocols: all
