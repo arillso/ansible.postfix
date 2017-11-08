@@ -14,7 +14,8 @@
 
 - name: Postfix installed
   become: true
-  package: name="{{ item }}" state=latest
+  package:
+    name: "{{ item }}"
   with_items: "{{ postfix_packages }}"
   tags:
     - packages
@@ -27,7 +28,7 @@
     owner: root
     group: root
     mode: 0644
-  notify: 
+  notify:
     - postmap sasl_passwd
     - restart postfix
   tags:
