@@ -1,3 +1,5 @@
+---
+
 galaxy_info:
   author: arillso
   description: Ansible role for installing and Configuration Pstfix on installs RHEL/CentOS or Debian/Ubuntu.

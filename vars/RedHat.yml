@@ -3,6 +3,6 @@
 
 postfix_packages:
     - postfix
-    - cyrus-sasl-plain 
+    - cyrus-sasl-plain
     - cyrus-sasl
     - mailx
