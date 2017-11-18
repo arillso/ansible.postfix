@@ -17,12 +17,12 @@ postfix_mydestination:
   - localhost.$mydomain
   - localhost
 
-postfix_relayhost: 
+postfix_relayhost:
 postfix_relayhost_port:
 postfix_relaytls: true
 postfix_sasl_auth_enable: true
-postfix_sasl_user: 
+postfix_sasl_user:
 postfix_sasl_password:
 postfix_sasl_security_options: noanonymous
 
-postfix_root_mailbox: 
+postfix_root_mailbox:
