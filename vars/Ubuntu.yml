@@ -1,0 +1,5 @@
+---
+# vars file for arillso.postfix
+
+postfix_packages:
+  - postfix
