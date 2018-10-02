@@ -1,6 +1,8 @@
 ---
 # defaults file for arillso.postfix
 
+postfix_disable_vrfy_command: "yes"
+
 postfix_inet_interfaces: all
 postfix_inet_protocols: all
 
