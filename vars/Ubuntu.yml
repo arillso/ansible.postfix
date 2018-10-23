@@ -3,3 +3,5 @@
 
 postfix_packages:
   - postfix
+
+psotfix_daemon_directory: /usr/lib/postfix/sbin
