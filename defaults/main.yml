@@ -20,10 +20,10 @@ postfix_mydestination:
   - localhost
 
 postfix_relayhost:
-postfix_relayhost_port:
+postfix_relayhost_port: 25
 postfix_relaytls: true
-postfix_sasl_auth_enable: true
-postfix_sasl_user:
+postfix_sasl_auth_enable: false
+postfix_sasl_user: false
 postfix_sasl_password:
 postfix_sasl_security_options: noanonymous
 

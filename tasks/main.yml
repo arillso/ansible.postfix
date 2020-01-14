@@ -37,12 +37,12 @@
 - name: configure sasl username/password
   become: true
   template:
-    src: sasl_passwd.j2
-    dest: /etc/postfix/sasl_passwd
-    owner: root
-    group: root
-    mode: 0600
-  when: postfix_relayhost != false
+    src:    sasl_passwd.j2
+    dest:   /etc/postfix/sasl_passwd
+    owner:  root
+    group:  root
+    mode:   0600
+  when: postfix_sasl_user != false
   notify:
     - postmap sasl_passwd
     - restart postfix
