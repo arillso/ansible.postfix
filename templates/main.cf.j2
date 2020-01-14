@@ -1,7 +1,7 @@
 # {{ ansible_managed }}
 
 disable_vrfy_command = {{ postfix_disable_vrfy_command }}
-# smtpd_banner = $myhostname ESMTP $mail_name
+smtpd_banner = $myhostname ESMTP
 biff = no
 
 # appending .domain is the MUA's job.
@@ -51,6 +51,8 @@ debug_peer_level = 2
 debugger_command =
      PATH=/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin
      ddd $daemon_directory/$process_name $process_id & sleep 5
+
+smtpd_recipient_restrictions = permit_mynetworks,reject_unauth_destination
 
 {% if postfix_relayhost %}
 relayhost = [{{ postfix_relayhost }}]:{{ postfix_relayhost_port }}
