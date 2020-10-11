@@ -58,10 +58,10 @@ relayhost = [{{ postfix_relayhost }}]:{{ postfix_relayhost_port }}
 smtp_sasl_auth_enable = {{ 'yes' if postfix_sasl_auth_enable else 'no' }}
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
 smtp_sasl_security_options = {{ postfix_sasl_security_options }}
+{% endif %}
+{% endif %}
 {% if postfix_relaytls %}
 smtp_use_tls = yes
 smtp_tls_security_level = encrypt
 smtp_tls_note_starttls_offer = yes
-{% endif %}
-{% endif %}
 {% endif %}
