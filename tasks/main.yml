@@ -42,7 +42,7 @@
     owner: root
     group: root
     mode: 0600
-  when: postfix_relayhost|bool != false
+  when: postfix_relayhost
   notify:
     - postmap sasl_passwd
     - restart postfix
