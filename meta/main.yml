@@ -1,7 +1,6 @@
 ---
 galaxy_info:
   role_name: postfix
-  description: Ansible Postfix Role by arillso
   author: arillso
   description: Ansible role for installing and Configuration Pstfix on installs RHEL/CentOS or Debian/Ubuntu.
   license: MIT
