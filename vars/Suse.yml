@@ -1,0 +1,10 @@
+---
+# vars file for arillso.postfix
+
+postfix_packages:
+    - postfix
+    - cyrus-sasl-plain
+    - cyrus-sasl
+    - mailx
+
+psotfix_daemon_directory: /usr/libexec/postfix
