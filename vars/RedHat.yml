@@ -7,4 +7,4 @@ postfix_packages:
     - cyrus-sasl
     - mailx
 
-psotfix_daemon_directory: /usr/libexec/postfix
+postfix_daemon_directory: /usr/libexec/postfix

@@ -5,4 +5,4 @@ postfix_packages:
   - postfix
   - mailutils
 
-psotfix_daemon_directory: /usr/lib/postfix/sbin
+postfix_daemon_directory: /usr/lib/postfix/sbin
